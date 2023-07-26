@@ -267,6 +267,11 @@ p, h1, h2, h3, h4, h5, h6 {
   padding: 1em;
 }
 
+
+/* Teams Page */
+.teams-title{
+  padding-top: 80px;
+}
 /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
 @media screen and (min-width: 700px) {
   #navbar-toggle,

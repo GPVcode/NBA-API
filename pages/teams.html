@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
     <title>NBA by GPVdev</title>
 </head>
-<body>
+<body >
     <!-- Navbar -->
     <header id="navbar">
         <nav class="navbar-container container">
@@ -40,6 +40,18 @@
         </nav>
     </header>
     <!-- End of navbar -->
-    <script src="app.js"></script>
+    <div class="teams-title">
+        <h1>NBA Teams</h1>
+        <label for="team=select" class="team-select">Select Team</label>
+        <select name="team-select" class="team-select" onclick="selectTeams()">
+            <option>Select All Teams</option>
+        </select>
+        <button type="submit" class="submit">Submit</button>
+    </div>
+
+    <!-- <div class="team-table" id="team-table">
+        <input type="button" id="get-teams" onClick="getAllTeams()" value="submit" />
+    </div> -->
+    <script src="teams.js"></script>
 </body>
 </html>
