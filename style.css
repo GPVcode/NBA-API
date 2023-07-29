@@ -272,6 +272,12 @@ p, h1, h2, h3, h4, h5, h6 {
 .teams-title{
   padding-top: 80px;
 }
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
 /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
 @media screen and (min-width: 700px) {
   #navbar-toggle,
