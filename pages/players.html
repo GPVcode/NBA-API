@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>NBA by GPVdev</title>
+</head>
+<body >
+    <!-- Navbar -->
+    <header id="navbar">
+        <nav class="navbar-container container">
+            <a href="/index.html" class="home-link">
+                NBA Stats by GPVDev 
+                <img 
+                  class="navbar-logo"
+                  src="/assets/BlackGPVlogo.svg"
+                  alt="logo"
+                >
+            </a>
+            <button 
+                type="button" 
+                id="navbar-toggle" 
+                aria-controls="navbar-menu"
+                aria-label="Toggle menu"
+                aria-expanded="false"
+            >
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div id="navbar-menu" aria-labelledby="navbar-toggle">
+                <ul class="navbar-links">
+                    <li class="navbar-item"><a class="navbar-link" href="/pages/teams.html">Teams</a></li>
+                    <li class="navbar-item"><a class="navbar-link" href="/pages/players.html">Players</a></li>
+                    <li class="navbar-item"><a class="navbar-link" href="https://github.com/GPVcode/NBA-API">Github</a></li>
+                    <li class="navbar-item"><a class="navbar-link" href="/teams">Tab</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- End of navbar -->
+    <form class="form-container" id="selectPlayerForm">
+        <h1>NBA Players</h1>
+        <label for="player-select" class="player-select">Select Player</label>
+        <input list="players" name="player-select" class="player-select" onclick="selectPlayers()">
+            <datalist id="players">
+                <option value="All Players">All Players</option>
+            </datalist>
+        </input>
+        <input type="submit">
+    </form>
+
+    <div class="players-table-container">
+        <table class="table" id="table">
+            <tr class="table-header-row">
+                <th>Abbreviation</th>
+                <th>City</th>
+                <th>Conference</th>
+                <th>Division</th>
+                <th>Team Name</th>
+            </tr>
+        </table>
+    </div>
+
+    <!-- <div class="team-table" id="team-table">
+        <input type="button" id="get-teams" onClick="getAllTeams()" value="submit" />
+    </div> -->
+    <script src="players.js"></script>
+</body>
+</html>
+
+<!--  
+get table container by id
+create emtpy row element
+insert cells(<td>)
+-->

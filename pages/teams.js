@@ -8,14 +8,14 @@ const formEl = document.getElementById('selectTeamForm');
 
 // API link  
 const url = `https://www.balldontlie.io/api/v1/teams`;
+const teamUrl = `https://www.balldontlie.io/api/v1/teams/${ID}`
 
+// Team select dropdown
 const selectTeams = async () => {
-
     const response = await fetch(url);
     const data = await response.json();
     const teamData = data.data;
 
-    let choice;
     for(let team of teamData){
         const teamName = team.full_name
         if(selectEl.length === 31){
@@ -25,24 +25,11 @@ const selectTeams = async () => {
             selectEl.options[selectEl.options.length] = new Option(teamName);
             // selectEl.options[selectEl.options.length].value = `${teamName}`;
         } 
-        choice = teamName;
     }
-
 }
 
-formEl.addEventListener("submit", (e) => {
-    e.preventDefault();
 
-    const selectedOption = selectEl.value;
-
-    if(selectedOption === "All Teams"){
-        getAllTeams();
-    } else {
-        getTeam(selectedOption);
-    }
-
-})
-
+// get all teams
 const getAllTeams = async () => {
 
     for(let i = teamsTable.rows.length - 1; i > 0; i--){
@@ -68,16 +55,14 @@ const getAllTeams = async () => {
         // add the row to the end of the table
         teamsTable.appendChild(row);
     }
-
 }
 
+// get one team
 const getTeam = async (selectedOption) => {
-
     
     for(let i = teamsTable.rows.length - 1; i > 0; i--){
         teamsTable.deleteRow(i);
     }
-
     const tbl = document.getElementById('table');
 
     const response = await fetch(url);
@@ -85,7 +70,6 @@ const getTeam = async (selectedOption) => {
     const teamData = data.data;
 
     let team;
-
     for(let i = 0; i < 30; i++){
         const row = document.createElement("tr");
         if(selectedOption === teamData[i].full_name){
@@ -95,23 +79,19 @@ const getTeam = async (selectedOption) => {
                 const cellText = document.createTextNode(`${team[j][1]}`);
                 cell.appendChild(cellText);
                 row.appendChild(cell);
-            
             }
             tbl.appendChild(row)
         }
-
     }
 }
 
-// selectEl.addEventListener('onclick', selectTeams());
+formEl.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const selectedOption = selectEl.value;
 
-
-
-
-
-// getTeamsEl.addEventListener('onclick', getAllTeams());
-
-// get element ID of table
-// const teamsTable = document.getElementById('table');
-// add table row
-// add table row data
+    if(selectedOption === "All Teams"){
+        getAllTeams();
+    } else {
+        getTeam(selectedOption);
+    }
+})
