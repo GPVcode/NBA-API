@@ -6,9 +6,11 @@ const teamsTable = document.getElementById('table');
 const selectEl = document.querySelector('select');
 const formEl = document.getElementById('selectTeamForm');
 
+// API link  
+const url = `https://www.balldontlie.io/api/v1/teams`;
+
 const selectTeams = async () => {
 
-    const url = `https://www.balldontlie.io/api/v1/teams`;
     const response = await fetch(url);
     const data = await response.json();
     const teamData = data.data;
@@ -31,19 +33,22 @@ const selectTeams = async () => {
 formEl.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    if(selectEl.value === "All Teams"){
+    const selectedOption = selectEl.value;
+
+    if(selectedOption === "All Teams"){
         getAllTeams();
     } else {
-        getTeam();
+        getTeam(selectedOption);
     }
 
 })
 
 const getAllTeams = async () => {
 
-    const tbl = document.getElementById('table');
+    for(let i = teamsTable.rows.length - 1; i > 0; i--){
+        teamsTable.deleteRow(i);
+    }
 
-    const url = `https://www.balldontlie.io/api/v1/teams`;
     const response = await fetch(url);
     const data = await response.json();
     const teamData = data.data;
@@ -61,18 +66,42 @@ const getAllTeams = async () => {
             row.appendChild(cell);
         }
         // add the row to the end of the table
-        tbl.appendChild(row);
+        teamsTable.appendChild(row);
     }
-    
+
 }
 
-// const getTeam = async () => {
-//     const url = `https://www.balldontlie.io/api/v1/teams`;
-//     const response = await fetch(url);
-//     const data = await response.json();
-//     const teamData = data.data;
-//     return teamData[0]
-// }
+const getTeam = async (selectedOption) => {
+
+    
+    for(let i = teamsTable.rows.length - 1; i > 0; i--){
+        teamsTable.deleteRow(i);
+    }
+
+    const tbl = document.getElementById('table');
+
+    const response = await fetch(url);
+    const data = await response.json();
+    const teamData = data.data;
+
+    let team;
+
+    for(let i = 0; i < 30; i++){
+        const row = document.createElement("tr");
+        if(selectedOption === teamData[i].full_name){
+            team = Object.entries(teamData[i])
+            for(let j = 1; j < 6; j++){
+                const cell = document.createElement("td");
+                const cellText = document.createTextNode(`${team[j][1]}`);
+                cell.appendChild(cellText);
+                row.appendChild(cell);
+            
+            }
+            tbl.appendChild(row)
+        }
+
+    }
+}
 
 // selectEl.addEventListener('onclick', selectTeams());
 
