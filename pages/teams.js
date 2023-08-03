@@ -8,7 +8,7 @@ const formEl = document.getElementById('selectTeamForm');
 
 // API link  
 const url = `https://www.balldontlie.io/api/v1/teams`;
-const teamUrl = `https://www.balldontlie.io/api/v1/teams/${ID}`
+// const teamUrl = `https://www.balldontlie.io/api/v1/teams/${ID}`
 
 // Team select dropdown
 const selectTeams = async () => {

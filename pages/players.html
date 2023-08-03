@@ -40,14 +40,10 @@
         </nav>
     </header>
     <!-- End of navbar -->
-    <form class="form-container" id="selectPlayerForm">
+    <form autocomplete="off" class="form-container" id="selectPlayerForm">
         <h1>NBA Players</h1>
         <label for="player-select" class="player-select">Select Player</label>
-        <input list="players" name="player-select" class="player-select" onclick="selectPlayers()">
-            <datalist id="players">
-                <option value="All Players">All Players</option>
-            </datalist>
-        </input>
+            <input list="players" name="player-select" class="players" onclick="selectPlayers()" placeholder="All Players">
         <input type="submit">
     </form>
 

@@ -1,22 +1,18 @@
-/* https://www.joshwcomeau.com/css/custom-css-reset/ */
-/*
-  1. Use a more-intuitive box-sizing model.
-*/
 
 /* primary colors
   #F88158 basketball orange
   #077ea7 blue
 */
-html {
-    box-sizing: border-box;
 
-  }
-  
+/* https://www.joshwcomeau.com/css/custom-css-reset/ */
+
 /* slap on this class if ncontent box is needed */
 .legacy {
     box-sizing: content-box;
   }
-
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
 *, *::before, *::after {
     box-sizing: border-box;
   }
